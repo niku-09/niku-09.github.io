@@ -242,8 +242,9 @@
     .skill-items-list li:hover{color:var(--ink);padding-left:0.4rem}
 
     /* ── EDUCATION ── */
-    #education{background:var(--white);padding:1.6rem 4.5rem;border-top:1px solid var(--cream-dark);}
+    #education{background:var(--white);padding:1.6rem 4.5rem;border-bottom:1px solid var(--cream-dark);}
     .edu-strip{display:flex;align-items:center;gap:12px;font-size:13.5px;color:var(--ink-dim);}
+    .edu-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-dim);margin-right:4px;}
     .edu-degree{font-weight:500;color:var(--ink);}
     .edu-sep{color:var(--cream-dark);font-size:16px;}
     .edu-cgpa{font-weight:400;}
@@ -639,6 +640,8 @@
 
   <section id="education">
     <div class="edu-strip reveal">
+      <span class="edu-label">Education</span>
+      <span class="edu-sep">·</span>
       <span class="edu-degree">B.Tech Mechatronics &amp; Automation</span>
       <span class="edu-sep">·</span>
       <span class="edu-uni">Vellore Institute of Technology, Chennai</span>
