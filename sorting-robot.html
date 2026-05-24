@@ -76,11 +76,6 @@
   .video-placeholder svg { opacity: 0.35; }
   .media-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
-  /* BODY TEXT */
-  .body-text { max-width: var(--max); margin: 52px auto 0; padding: 0 32px; }
-  .body-text p { font-size: 16.5px; line-height: 1.85; color: var(--ink); }
-  .body-text p + p { margin-top: 20px; }
-
   /* CONTENT SECTION */
   .content-section { max-width: var(--max); margin: 0 auto; padding: 52px 32px 0; }
   .section-label { font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 28px; display: block; }
@@ -118,7 +113,7 @@
 
   @media (max-width: 680px) {
     nav { padding: 0 20px; }
-    .project-header, .body-text, .media-wrap,
+    .project-header, .media-wrap,
     .content-section, .stack-wrap, .back-wrap { padding-left: 20px; padding-right: 20px; }
     .media-pair { grid-template-columns: 1fr; }
   }
@@ -170,11 +165,6 @@
       <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
       Add project video here
     </div>
-  </div>
-
-  <!-- OVERVIEW -->
-  <div class=”body-text fade” style=”margin-top:52px;”>
-    <p>A low-cost, functional robotic sorting system that autonomously detects, classifies, and places small cardboard packages into designated drop zones “ built to demonstrate last-metre warehouse automation at minimal hardware cost. The system integrates a custom 4-DOF robotic arm, an overhead USB camera, and a Python-based software stack orchestrated through a real-time web dashboard.</p>
   </div>
 
   <!-- HOW IT WORKS -->
