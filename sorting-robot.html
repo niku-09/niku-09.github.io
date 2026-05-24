@@ -41,9 +41,7 @@
   .page { padding-top: 64px; }
 
   /* HEADER */
-  .project-header { max-width: var(--max); margin: 0 auto; padding: 64px 32px 40px; display: grid; grid-template-columns: 1fr 210px; gap: 48px; align-items: start; }
-  .header-left { }
-  .header-photo img { width: 100%; border-radius: 12px; display: block; object-fit: cover; box-shadow: 0 4px 20px rgba(24,22,15,0.12); position: sticky; top: 84px; }
+  .project-header { max-width: var(--max); margin: 0 auto; padding: 64px 32px 40px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .tag {
     font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
@@ -59,8 +57,6 @@
   .project-header .subtitle {
     font-size: 16px; color: var(--ink-dim); font-weight: 300; margin-top: 6px;
   }
-  @media (max-width: 720px) { .project-header { grid-template-columns: 1fr; } .header-photo { display: none; } }
-
   /* MEDIA PLACEHOLDER */
   .media-wrap { max-width: var(--max); margin: 40px auto 0; padding: 0 32px; }
   .photo-placeholder {
@@ -151,20 +147,15 @@
 
   <!-- HEADER -->
   <header class=”project-header fade”>
-    <div class=”header-left”>
-      <div class=”tag-row”>
-        <span class=”tag accent”>Robotics · Computer Vision</span>
-        <span class=”tag”>Embedded Systems</span>
-        <span class=”tag”>Warehouse Automation</span>
-        <span class=”tag”>Python · OpenCV · Flask</span>
-        <span class=”tag”>Dec 2025 “ Apr 2026</span>
-      </div>
-      <h1>Vision-Guided Autonomous<br><em>Package Sorting Robot</em></h1>
-      <p class=”subtitle”>A low-cost robotic sorting system that autonomously detects, classifies, and places packages “ last-metre warehouse automation on a minimal hardware budget.</p>
+    <div class=”tag-row”>
+      <span class=”tag accent”>Robotics · Computer Vision</span>
+      <span class=”tag”>Embedded Systems</span>
+      <span class=”tag”>Warehouse Automation</span>
+      <span class=”tag”>Python · OpenCV · Flask</span>
+      <span class=”tag”>Dec 2025 “ Apr 2026</span>
     </div>
-    <div class=”header-photo”>
-      <img src=”robot/IMG_4791.jpg” alt=”Robot arm setup with checkerboard and packages”>
-    </div>
+    <h1>Vision-Guided Autonomous<br><em>Package Sorting Robot</em></h1>
+    <p class=”subtitle”>A low-cost robotic sorting system that autonomously detects, classifies, and places packages “ last-metre warehouse automation on a minimal hardware budget.</p>
   </header>
 
   <!-- VIDEO AFTER TITLE -->
@@ -196,9 +187,8 @@
     <span class="section-label">Inverse Kinematics + Camera Coordinates Validation / Testing</span>
   </section>
   <div class="media-wrap fade">
-    <div class="video-placeholder">
-      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-      Add IK / coordinate validation video here
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:14px;box-shadow:0 8px 32px rgba(24,22,15,0.12);">
+      <iframe src="https://www.youtube-nocookie.com/embed/_Bpt4qC_1GQ" title="IK + Camera Coordinates Validation" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;border-radius:14px;"></iframe>
     </div>
   </div>
 
@@ -211,9 +201,9 @@
   </div>
 
   <!-- GROUP PHOTO -->
-  <div class="media-wrap fade" style="margin-top:24px;">
-    <img src="robot/WhatsApp%20Image%202026-05-24%20at%2017.57.35.jpeg" alt="Group photo" style="width:100%;border-radius:14px;display:block;box-shadow:0 8px 32px rgba(24,22,15,0.12);">
-    <p class="team-credit">I created this project alongside Abhinav Kumar &amp; Nekha Sudheer.</p>
+  <div class="media-wrap fade" style="margin-top:24px;display:flex;flex-direction:column;align-items:center;gap:12px;">
+    <img src="robot/WhatsApp%20Image%202026-05-24%20at%2017.57.35.jpeg" alt="Group photo" style="width:100%;max-width:340px;border-radius:12px;display:block;box-shadow:0 4px 16px rgba(24,22,15,0.10);">
+    <p class="team-credit" style="text-align:center;">I created this project alongside Abhinav Kumar &amp; Nekha Sudheer.</p>
   </div>
 
 
