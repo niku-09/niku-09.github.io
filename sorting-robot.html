@@ -170,15 +170,17 @@
   <section class="content-section fade">
     <span class="section-label">How it works</span>
     <div class="flowchart">
-      <div class="flow-step"><span class="flow-num">01</span><span>Detection Pipeline</span></div>
+      <div class="flow-step"><span class="flow-num">01</span><span>Frame capture &amp; preprocessing</span></div>
       <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-num">02</span><span>Colour Classification</span></div>
+      <div class="flow-step"><span class="flow-num">02</span><span>Box detection &amp; validation</span></div>
       <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-num">03</span><span>Camera-to-Robot Coordinate Transform</span></div>
+      <div class="flow-step"><span class="flow-num">03</span><span>Label classification</span></div>
       <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-num">04</span><span>Inverse Kinematics &amp; Motion Planning</span></div>
+      <div class="flow-step"><span class="flow-num">04</span><span>Camera-to-robot transform</span></div>
       <div class="flow-arrow">&#8595;</div>
-      <div class="flow-step"><span class="flow-num">05</span><span>Pick, Sort &amp; Place</span></div>
+      <div class="flow-step"><span class="flow-num">05</span><span>Inverse kinematics solving</span></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-num">06</span><span>Pick, place &amp; sort</span></div>
     </div>
   </section>
 
