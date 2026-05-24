@@ -40,7 +40,7 @@
     .proj-thumb { transition: filter 0.4s; }
     .project-card:hover .proj-thumb { filter: saturate(1.15) brightness(1.03); }
 
-    html{scroll-behavior:smooth; transition: background 0.4s, color 0.4s}
+    html{scroll-behavior:smooth; transition: background 0.4s, color 0.4s; overflow-x: hidden;}
     body{font-family:var(--sans);background:var(--cream);color:var(--ink);overflow-x:hidden;-webkit-font-smoothing:antialiased;transition:background 0.4s ease,color 0.4s ease}
 
     /* ── NAV ── */
@@ -379,6 +379,133 @@
     }
     .project-card[data-soon]:hover::after { opacity: 1; }
     .project-card[data-soon] .proj-links a { color: var(--ink-dim); pointer-events: none; }
+
+    /* =============================================================
+       MOBILE RESPONSIVENESS — purely additive, desktop untouched
+       ============================================================= */
+
+    /* Hamburger button — hidden on desktop */
+    .nav-hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      color: var(--ink); font-size: 1.3rem; line-height: 1;
+      min-width: 44px; min-height: 44px;
+      align-items: center; justify-content: center;
+      padding: 0; border-radius: 4px; transition: color 0.2s;
+      position: absolute; right: 1.25rem; top: 50%; transform: translateY(-50%);
+    }
+    .nav-hamburger:hover { color: var(--accent); }
+
+    /* ── 768px: Tablet / large phone ── */
+    @media (max-width: 768px) {
+      .nav-hamburger { display: flex; }
+      .nav-links {
+        display: none;
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; gap: 0; margin-left: 0;
+        background: rgba(246,243,238,0.98);
+        backdrop-filter: blur(14px);
+        padding: 0.5rem 0 0.75rem;
+        border-bottom: 1px solid var(--cream-dark);
+        box-shadow: 0 8px 24px rgba(24,22,15,0.08);
+        list-style: none;
+      }
+      .nav-links.open { display: flex; }
+      .nav-links li { width: 100%; }
+      .nav-links a {
+        display: flex; align-items: center;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.85rem; min-height: 44px; width: 100%;
+      }
+      .nav-links a::after { display: none; }
+
+      /* Hero */
+      #hero { padding: 5rem 1.25rem 3rem; gap: 1.5rem; }
+      .arm-stage { overflow: hidden; }
+      #arm-canvas { width: 310px; height: 310px; margin-left: -25px; margin-right: -155px; }
+      .words-stage { width: auto; min-width: 0; flex: 1; padding-left: 18px; padding-bottom: 5rem; }
+      .hw { font-size: clamp(1.35rem, 5.5vw, 2rem); }
+      .hero-center { padding: 0; align-items: center; text-align: center; width: 100%; }
+      .intro-text { text-align: center; max-width: 100%; font-size: 0.97rem; }
+      .hero-cta { text-align: center; }
+      .hero-social { justify-content: center; }
+      .hero-social a { width: 44px; height: 44px; }
+      .hero-right { width: 100%; justify-content: center; }
+      .profile-pic-placeholder { width: min(240px, 70vw); height: auto; aspect-ratio: 3/4; }
+
+      /* Sections */
+      section { padding: 4rem 1.25rem; }
+      #skills { padding: 4rem 1.25rem; }
+      #contact { padding: 4rem 1.25rem; }
+      .section-head { margin-bottom: 2.5rem; }
+
+      /* Projects */
+      .proj-thumb { height: 200px; }
+      .proj-body.has-desc p { font-size: 14px; }
+      .projects-grid { gap: 1.25rem; }
+
+      /* Skills: 2-col on tablet */
+      .skills-cols { grid-template-columns: 1fr 1fr; }
+
+      /* Contact */
+      .contact-link { min-height: 52px; }
+      .contact-link-val { font-size: 0.82rem; word-break: break-all; }
+
+      /* Education */
+      .edu-strip { flex-wrap: wrap; gap: 6px; font-size: 12.5px; }
+
+      /* Buttons */
+      .btn-primary, .btn-outline { min-height: 44px; padding: 0.9rem 1.5rem; }
+
+      /* Footer */
+      footer { padding: 1.5rem 1.25rem; }
+
+      /* Modal */
+      #proj-modal-box { padding: 1.75rem; }
+    }
+
+    /* ── 600px: Large phone ── */
+    @media (max-width: 600px) {
+      #arm-canvas { width: 255px; height: 255px; margin-left: -15px; margin-right: -115px; }
+      .words-stage { padding-bottom: 4.5rem; padding-left: 14px; }
+      .profile-pic-placeholder { width: min(220px, 68vw); }
+      .proj-thumb { height: 180px; }
+      .projects-grid { gap: 1rem; }
+    }
+
+    /* ── 480px: Standard phone ── */
+    @media (max-width: 480px) {
+      #hero { padding: 4.5rem 1rem 2.5rem; }
+      #arm-canvas { width: 215px; height: 215px; margin-left: -10px; margin-right: -85px; }
+      .words-stage { padding-left: 10px; padding-bottom: 3.5rem; }
+      .hw { font-size: clamp(1.15rem, 5vw, 1.6rem); }
+      .profile-pic-placeholder { width: min(200px, 64vw); }
+      .skills-cols { grid-template-columns: 1fr; }
+      section { padding: 3rem 1rem; }
+      #skills, #contact { padding: 3rem 1rem; }
+      .proj-thumb { height: 165px; }
+      #proj-modal-box { padding: 1.25rem; max-height: 90vh; }
+      .modal-stat-grid { gap: 0.5rem; }
+      .modal-stat-val { font-size: 1.2rem; }
+    }
+
+    /* ── 375px: iPhone ── */
+    @media (max-width: 375px) {
+      #arm-canvas { width: 185px; height: 185px; margin-left: 0; margin-right: -60px; }
+      .words-stage { padding-left: 6px; padding-bottom: 2.5rem; }
+      .hw { font-size: clamp(1rem, 5.5vw, 1.45rem); }
+      .profile-pic-placeholder { width: min(180px, 60vw); }
+      .edu-strip { font-size: 12px; }
+      nav { padding: 0 1rem; }
+    }
+
+    /* ── 320px: Small phones ── */
+    @media (max-width: 320px) {
+      #arm-canvas { width: 155px; height: 155px; margin-left: 0; margin-right: -40px; }
+      .words-stage { padding-left: 4px; padding-bottom: 2rem; }
+      .hw { font-size: clamp(0.95rem, 5vw, 1.3rem); }
+      .profile-pic-placeholder { width: min(160px, 76vw); }
+    }
   </style>
 </head>
 <body>
@@ -413,6 +540,7 @@
       <li><a href="#skills" id="nav-skills">Skills</a></li>
       <li><a href="#contact" id="nav-contact">Contact</a></li>
     </ul>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">☰</button>
   </nav>
 
   <section id="hero">
@@ -473,7 +601,7 @@
 
       <!-- 01 — Vision Robot -->
       <div class="project-card reveal" id="pi-1" onclick="window.location.href='sorting-robot.html'" style="cursor:pointer;">
-        <div class="proj-thumb c0" style="position:relative;overflow:hidden;"><img src="robot/IMG_4790_card.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:1;"><span class="thumb-badge">Featured · Current</span></div>
+        <div class="proj-thumb c0" style="position:relative;overflow:hidden;"><img src="robot/IMG_4790_card.jpg" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;z-index:1;"><span class="thumb-badge">Featured · Current</span></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">Robotics &amp; Computer Vision</span><span class="proj-year">Dec 2025 — Apr 2026</span></div>
           <h3>Vision-Guided Autonomous Sorting Robot</h3>
@@ -485,7 +613,7 @@
 
       <!-- 02 — Parkinson's Spoon -->
       <div class="project-card reveal" id="pi-2" onclick="window.location.href='parkinsons-spoon.html'" style="cursor:pointer;">
-        <div class="proj-thumb c1" style="position:relative;overflow:hidden;"><img src="Parkinson's media/WhatsApp Image 2026-05-17 at 20.29.18.jpeg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;"></div>
+        <div class="proj-thumb c1" style="position:relative;overflow:hidden;"><img src="Parkinson's media/WhatsApp Image 2026-05-17 at 20.29.18.jpeg" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 62%;"></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">Embedded Systems · Biomedical</span><span class="proj-year">Feb – May 2025</span></div>
           <h3>Self-Stabilizing Spoon for Parkinson's Patients — Prototype <span class="patent-badge">Patent</span></h3>
@@ -497,7 +625,7 @@
 
       <!-- 03 — PMSM -->
       <div class="project-card reveal" id="pi-3" onclick="window.location.href='pmsm.html'" style="cursor:pointer;">
-        <div class="proj-thumb c2" style="background:#f0f0f0;"><img src="pmsm_hero.png" alt="PMSM FEA flux density plot" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:0.5rem;"></div>
+        <div class="proj-thumb c2" style="background:#f0f0f0;"><img src="pmsm_hero.png" alt="PMSM FEA flux density plot" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:0.5rem;"></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">Simulation · Electric Drives</span><span class="proj-year">Aug – Nov 2023</span></div>
           <h3>PMSM Design &amp; Simulation via FEA</h3>
@@ -510,7 +638,7 @@
       <!-- 04 — Porous Media Combustion -->
       <div class="project-card reveal" id="pi-0" onclick="window.location.href='pmc.html'">
         <div class="proj-thumb" style="background:linear-gradient(135deg,#2a1f1a 0%,#4a2e1e 50%,#6b3a20 100%)">
-          <img src="pmc_collage.png" alt="Porous Media Combustion" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
+          <img src="pmc_collage.png" alt="Porous Media Combustion" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
           <span class="thumb-badge">Research · Paper in Prep</span>
         </div>
         <div class="proj-body">
@@ -524,7 +652,7 @@
 
       <!-- 05 — Aeroponics -->
       <div class="project-card reveal" id="pi-4" onclick="window.location.href='aeroponics.html'" style="cursor:pointer;">
-        <div class="proj-thumb c3"><img src="aeroponics_media/WhatsApp Image 2026-05-17 at 18.13.57.jpeg" alt="Aeroponics tower" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%;"></div>
+        <div class="proj-thumb c3"><img src="aeroponics_media/WhatsApp Image 2026-05-17 at 18.13.57.jpeg" alt="Aeroponics tower" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:38% 30%;"></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">IoT · Automation</span><span class="proj-year">Aug – Nov 2025</span></div>
           <h3>Automated Vertical Aeroponics System</h3>
@@ -536,7 +664,7 @@
 
       <!-- 06 — LabVIEW -->
       <div class="project-card reveal" id="pi-5" onclick="window.location.href='labview.html'" style="cursor:pointer;">
-        <div class="proj-thumb c4" style="position:relative;overflow:hidden;"><img src="labview_collage.png" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+        <div class="proj-thumb c4" style="position:relative;overflow:hidden;"><img src="labview_collage.png" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">Instrumentation · Research</span><span class="proj-year">Sep – Dec 2023</span></div>
           <h3>LabVIEW Sensor Interfacing for Power Electronics</h3>
@@ -549,7 +677,7 @@
 
       <!-- 07 — Marine ADAS Simulator -->
       <div class="project-card reveal" id="pi-6" onclick="window.location='marine-adas.html'" style="cursor:pointer">
-        <div class="proj-thumb c5" style="position:relative;overflow:hidden;"><img src="Marine%20ADAS/Screenshot%202026-05-21%20000044.png" alt="Marine ADAS Simulator" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;"></div>
+        <div class="proj-thumb c5" style="position:relative;overflow:hidden;"><img src="Marine%20ADAS/Screenshot%202026-05-21%20000044.png" alt="Marine ADAS Simulator" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:left top;"></div>
         <div class="proj-body">
           <div class="proj-meta"><span class="proj-type">Simulation · Maritime Autonomy</span><span class="proj-year">Mar 2025 — Apr 2025</span></div>
           <h3>Marine ADAS Simulator</h3>
@@ -561,7 +689,7 @@
 
       <!-- 08 — Guitar Amp -->
       <div class="project-card reveal" id="pi-7" style="cursor:default;">
-        <div class="proj-thumb c7" style="position:relative;overflow:hidden;"><img src="guitaramp/WhatsApp%20Image%202026-05-23%20at%2023.40.30.jpeg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
+        <div class="proj-thumb c7" style="position:relative;overflow:hidden;"><img src="guitaramp/WhatsApp%20Image%202026-05-23%20at%2023.40.30.jpeg" loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;"></div>
         <div class="proj-body has-desc">
           <div class="proj-meta"><span class="proj-type">Electronics · Analog</span><span class="proj-year">2026</span></div>
           <h3>Portable Mini 'Altoids' Guitar Amp — LM358</h3>
@@ -1483,6 +1611,32 @@
     });
   });
 
+
+  /* HAMBURGER MENU */
+  (function(){
+    const btn = document.querySelector('.nav-hamburger');
+    const links = document.querySelector('.nav-links');
+    if(!btn || !links) return;
+    btn.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      btn.setAttribute('aria-expanded', String(open));
+      btn.textContent = open ? '✕' : '☰';
+    });
+    links.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰';
+      });
+    });
+    document.addEventListener('click', e => {
+      if(!btn.contains(e.target) && !links.contains(e.target)) {
+        links.classList.remove('open');
+        btn.setAttribute('aria-expanded', 'false');
+        btn.textContent = '☰';
+      }
+    });
+  })();
 
   // Reset browser zoom when navigating back to this page
   window.addEventListener('pageshow', function() {

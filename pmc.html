@@ -22,7 +22,7 @@
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
   body { background: var(--cream); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 
   /* NAV */
@@ -133,6 +133,14 @@
   @media (max-width: 680px) {
     .intro-split, .hero-img-wrap, .media-wrap, .content-section, .back-wrap { padding-left: 20px; padding-right: 20px; }
     .media-pair { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 480px) {
+    .intro-split { padding-top: 32px; gap: 2rem; }
+    .intro-left h1 { font-size: clamp(22px, 6vw, 32px); }
+    .intro-body p { font-size: 15px; }
+    .setup-grid { grid-template-columns: 1fr; }
+    .section-label { font-size: 16px; }
+    .nav-back { min-height: 44px; }
   }
 </style>
 </head>
