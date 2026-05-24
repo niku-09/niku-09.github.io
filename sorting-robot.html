@@ -28,7 +28,7 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: center;
     padding: 0 48px; height: 64px;
     background: rgba(246,243,238,0.9); backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--cream-dark);
@@ -58,14 +58,6 @@
     font-size: 16px; color: var(--ink-dim); font-weight: 300; margin-top: 6px;
   }
 
-  /* HERO IMAGE */
-  .hero-img-wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-  .hero-img-wrap img {
-    width: 100%; border-radius: 16px; display: block;
-    box-shadow: 0 16px 48px rgba(24,22,15,0.14), 0 4px 12px rgba(24,22,15,0.07);
-  }
-  .img-caption { margin-top: 10px; font-size: 12px; color: var(--ink-dim); font-style: italic; text-align: center; }
-
   /* MEDIA PLACEHOLDER */
   .media-wrap { max-width: var(--max); margin: 40px auto 0; padding: 0 32px; }
   .photo-placeholder {
@@ -89,35 +81,9 @@
   .body-text p { font-size: 16.5px; line-height: 1.85; color: var(--ink); }
   .body-text p + p { margin-top: 20px; }
 
-  /* META GRID */
-  .meta-grid {
-    max-width: var(--max); margin: 48px auto 0; padding: 0 32px;
-    display: grid; grid-template-columns: repeat(4, 1fr);
-    gap: 0; border: 1px solid var(--cream-dark); border-radius: 12px;
-    overflow: hidden; background: var(--white);
-  }
-  .meta-cell { padding: 20px 24px; border-right: 1px solid var(--cream-dark); }
-  .meta-cell:last-child { border-right: none; }
-  .meta-label { font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-dim); margin-bottom: 4px; }
-  .meta-value { font-size: 14px; font-weight: 400; color: var(--ink-muted); line-height: 1.4; }
-
   /* CONTENT SECTION */
   .content-section { max-width: var(--max); margin: 0 auto; padding: 52px 32px 0; }
   .section-label { font-size: 18px; font-weight: 400; color: var(--ink); margin-bottom: 28px; display: block; }
-
-  /* ALGO TABLE */
-  .algo-tag {
-    display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em;
-    color: var(--accent); background: var(--accent-bg);
-    border-radius: 4px; padding: 4px 10px; white-space: nowrap;
-  }
-  .algo-table { width: 100%; border-collapse: collapse; }
-  .algo-table tr { border-bottom: 1px solid var(--cream-dark); }
-  .algo-table tr:last-child { border-bottom: none; }
-  .algo-table td { padding: 22px 0; vertical-align: top; }
-  .algo-table td:first-child { width: 110px; padding-right: 20px; padding-top: 24px; }
-  .algo-table td h3 { font-size: 15px; font-weight: 600; color: var(--ink); margin-bottom: 7px; }
-  .algo-table td p { font-size: 14.5px; line-height: 1.75; color: var(--ink-dim); }
 
   /* STACK LIST */
   .stack-wrap { max-width: var(--max); margin: 0 auto; padding: 48px 32px 0; }
@@ -127,14 +93,6 @@
     color: var(--ink); background: var(--white); border: 1px solid var(--cream-dark);
     border-radius: 999px; padding: 6px 16px;
   }
-
-  /* CALLOUT */
-  .callout {
-    background: var(--accent-bg); border-left: 3px solid var(--accent);
-    border-radius: 0 10px 10px 0; padding: 20px 24px; margin-top: 32px;
-  }
-  .callout p { font-size: 15px; line-height: 1.75; color: var(--ink-muted); }
-  .callout strong { color: var(--ink); font-weight: 600; }
 
   /* BACK */
   .back-wrap {
@@ -160,11 +118,8 @@
 
   @media (max-width: 680px) {
     nav { padding: 0 20px; }
-    .project-header, .hero-img-wrap, .body-text, .media-wrap, .meta-grid,
+    .project-header, .body-text, .media-wrap,
     .content-section, .stack-wrap, .back-wrap { padding-left: 20px; padding-right: 20px; }
-    .meta-grid { grid-template-columns: 1fr 1fr; }
-    .meta-cell:nth-child(2) { border-right: none; }
-    .meta-cell:nth-child(3) { border-top: 1px solid var(--cream-dark); }
     .media-pair { grid-template-columns: 1fr; }
   }
 
@@ -220,26 +175,6 @@
   <!-- OVERVIEW -->
   <div class=”body-text fade” style=”margin-top:52px;”>
     <p>A low-cost, functional robotic sorting system that autonomously detects, classifies, and places small cardboard packages into designated drop zones “ built to demonstrate last-metre warehouse automation at minimal hardware cost. The system integrates a custom 4-DOF robotic arm, an overhead USB camera, and a Python-based software stack orchestrated through a real-time web dashboard.</p>
-  </div>
-
-  <!-- META -->
-  <div class="meta-grid fade">
-    <div class="meta-cell">
-      <div class="meta-label">Arm</div>
-      <div class="meta-value">4-DOF · MG995 / SG90 Servos</div>
-    </div>
-    <div class="meta-cell">
-      <div class="meta-label">Vision</div>
-      <div class="meta-value">OpenCV · CLAHE · Otsu</div>
-    </div>
-    <div class="meta-cell">
-      <div class="meta-label">Stack</div>
-      <div class="meta-value">Python · Flask · Arduino Uno</div>
-    </div>
-    <div class="meta-cell">
-      <div class="meta-label">AI / Planning</div>
-      <div class="meta-value">YOLOv8 · ROS2 Humble (architecture)</div>
-    </div>
   </div>
 
   <!-- HOW IT WORKS -->
