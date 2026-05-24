@@ -41,7 +41,9 @@
   .page { padding-top: 64px; }
 
   /* HEADER */
-  .project-header { max-width: var(--max); margin: 0 auto; padding: 64px 32px 40px; }
+  .project-header { max-width: var(--max); margin: 0 auto; padding: 64px 32px 40px; display: grid; grid-template-columns: 1fr 210px; gap: 48px; align-items: start; }
+  .header-left { }
+  .header-photo img { width: 100%; border-radius: 12px; display: block; object-fit: cover; box-shadow: 0 4px 20px rgba(24,22,15,0.12); position: sticky; top: 84px; }
   .tag-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
   .tag {
     font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
@@ -57,6 +59,7 @@
   .project-header .subtitle {
     font-size: 16px; color: var(--ink-dim); font-weight: 300; margin-top: 6px;
   }
+  @media (max-width: 720px) { .project-header { grid-template-columns: 1fr; } .header-photo { display: none; } }
 
   /* MEDIA PLACEHOLDER */
   .media-wrap { max-width: var(--max); margin: 40px auto 0; padding: 0 32px; }
@@ -147,16 +150,21 @@
 <div class="page">
 
   <!-- HEADER -->
-  <header class="project-header fade">
-    <div class="tag-row">
-      <span class="tag accent">Robotics · Computer Vision</span>
-      <span class="tag">Embedded Systems</span>
-      <span class="tag">Warehouse Automation</span>
-      <span class="tag">Python · OpenCV · Flask</span>
-      <span class="tag">Dec 2025 ” Apr 2026</span>
+  <header class=”project-header fade”>
+    <div class=”header-left”>
+      <div class=”tag-row”>
+        <span class=”tag accent”>Robotics · Computer Vision</span>
+        <span class=”tag”>Embedded Systems</span>
+        <span class=”tag”>Warehouse Automation</span>
+        <span class=”tag”>Python · OpenCV · Flask</span>
+        <span class=”tag”>Dec 2025 “ Apr 2026</span>
+      </div>
+      <h1>Vision-Guided Autonomous<br><em>Package Sorting Robot</em></h1>
+      <p class=”subtitle”>A low-cost robotic sorting system that autonomously detects, classifies, and places packages “ last-metre warehouse automation on a minimal hardware budget.</p>
     </div>
-    <h1>Vision-Guided Autonomous<br><em>Package Sorting Robot</em></h1>
-    <p class="subtitle">A low-cost robotic sorting system that autonomously detects, classifies, and places packages ” last-metre warehouse automation on a minimal hardware budget.</p>
+    <div class=”header-photo”>
+      <img src=”robot/IMG_4791.jpg” alt=”Robot arm setup with checkerboard and packages”>
+    </div>
   </header>
 
   <!-- VIDEO AFTER TITLE -->
