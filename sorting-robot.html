@@ -167,6 +167,22 @@
     .meta-cell:nth-child(3) { border-top: 1px solid var(--cream-dark); }
     .media-pair { grid-template-columns: 1fr; }
   }
+
+  /* FLOWCHART */
+  .flowchart { display: flex; flex-direction: column; align-items: flex-start; gap: 0; max-width: 520px; }
+  .flow-step {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--white); border: 1px solid var(--cream-dark);
+    border-radius: 10px; padding: 14px 22px; width: 100%;
+  }
+  .flow-num {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.06em;
+    color: var(--accent); background: var(--accent-bg);
+    border-radius: 4px; padding: 3px 9px; white-space: nowrap; flex-shrink: 0;
+  }
+  .flow-step span { font-size: 15px; font-weight: 400; color: var(--ink); }
+  .flow-arrow { padding: 4px 0 4px 36px; color: var(--ink-dim); font-size: 20px; line-height: 1; }
+  .team-credit { font-size: 15px; color: var(--ink-dim); margin-top: 16px; font-weight: 300; }
 </style>
 </head>
 <body>
@@ -192,6 +208,14 @@
     <h1>Vision-Guided Autonomous<br><em>Package Sorting Robot</em></h1>
     <p class="subtitle">A low-cost robotic sorting system that autonomously detects, classifies, and places packages ” last-metre warehouse automation on a minimal hardware budget.</p>
   </header>
+
+  <!-- VIDEO AFTER TITLE -->
+  <div class="media-wrap fade">
+    <div class="video-placeholder">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      Add project video here
+    </div>
+  </div>
 
   <!-- HERO MEDIA -->
   <div class="hero-img-wrap fade">
@@ -240,148 +264,54 @@
     </div>
   </div>
 
-
   <!-- HOW IT WORKS -->
   <section class="content-section fade">
     <span class="section-label">How it works</span>
-    <table class="algo-table">
-
-      <tr>
-        <td><span class="algo-tag">â‘  Vision</span></td>
-        <td>
-          <h3>Detection Pipeline</h3>
-          <p>An overhead webcam captures the conveyor surface. OpenCV's background subtraction pipeline isolates packages using CLAHE-enhanced frames and Otsu thresholding. Detections are filtered by solidity, minimum area, and a temporal persistence check ” ensuring only stable, real boxes trigger the sorting sequence. An arm exclusion zone masks out the robot itself from the detection frame.</p>
-        </td>
-      </tr>
-    </table>
+    <div class="flowchart">
+      <div class="flow-step"><span class="flow-num">01</span><span>Detection Pipeline</span></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-num">02</span><span>Colour Classification</span></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-num">03</span><span>Camera-to-Robot Coordinate Transform</span></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-num">04</span><span>Inverse Kinematics &amp; Motion Planning</span></div>
+      <div class="flow-arrow">&#8595;</div>
+      <div class="flow-step"><span class="flow-num">05</span><span>Pick, Sort &amp; Place</span></div>
+    </div>
   </section>
 
-  <div class="media-wrap fade">
-    <div class="media-pair">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Vision detection output
-      </div>
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Overhead camera view
-      </div>
-    </div>
-  </div>
-
-  <section class="content-section fade" style="padding-top:32px;">
-    <table class="algo-table">
-      <tr>
-        <td><span class="algo-tag">â‘¡ Colour</span></td>
-        <td>
-          <h3>Colour Classification</h3>
-          <p>Each detected box carries a coloured sticker indicating its routing category: FRAGILE (red), IMMEDIATE (green), ZONE_A (yellow-orange), or DAMAGED (purple). A dual-space classifier ” combining HSV hue ranges with LAB colour signatures ” handles real-world printing variations and ambiguous hues. An inner-crop strategy and shadow-pixel exclusion sharpen accuracy under variable lighting.</p>
-        </td>
-      </tr>
-    </table>
+  <!-- IK + COORDS VIDEO -->
+  <section class="content-section fade" style="padding-top:40px;">
+    <span class="section-label">Inverse Kinematics + Camera Coordinates Validation / Testing</span>
   </section>
-
   <div class="media-wrap fade">
-    <div class="media-pair">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Colour classification output
-      </div>
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Label sticker examples
-      </div>
+    <div class="video-placeholder">
+      <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+      Add IK / coordinate validation video here
     </div>
   </div>
-
-  <section class="content-section fade" style="padding-top:32px;">
-    <table class="algo-table">
-      <tr>
-        <td><span class="algo-tag">â‘¢ Coords</span></td>
-        <td>
-          <h3>Camera-to-Robot Coordinate Transform</h3>
-          <p>Detected pixel coordinates are mapped to robot workspace coordinates via an empirically calibrated rigid transform (rotation + translation), derived using a checkerboard calibration board. A sign-convention correction aligns the camera's Y-axis with the robot's frame, and fixed XY offsets compensate for systematic mount error.</p>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <div class="media-wrap fade">
-    <div class="photo-placeholder" style="aspect-ratio:21/9;">
-      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-      Calibration board / coordinate mapping diagram
-    </div>
-  </div>
-
-  <section class="content-section fade" style="padding-top:32px;">
-    <table class="algo-table">
-      <tr>
-        <td><span class="algo-tag">â‘£ IK</span></td>
-        <td>
-          <h3>Inverse Kinematics &amp; Motion Planning</h3>
-          <p>A closed-form geometric IK solver (atan2 for base azimuth; law of cosines for shoulder/elbow) computes joint angles for any target pose. The elbow-up configuration is preferred. FK verification confirms solutions within Â±0.5 cm before dispatch. Servo commands are sequenced with a staged lift strategy to manage torque on the forearm joint.</p>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <div class="media-wrap fade">
-    <div class="media-pair">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Arm reaching / IK pose
-      </div>
-      <div class="video-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        Motion sequence clip
-      </div>
-    </div>
-  </div>
-
-  <section class="content-section fade" style="padding-top:32px;">
-    <table class="algo-table">
-      <tr>
-        <td><span class="algo-tag">â‘¤ Sort</span></td>
-        <td>
-          <h3>Pick, Sort &amp; Place</h3>
-          <p>The arm moves to the detected box position, closes the gripper, lifts in stages, rotates to the pre-mapped drop-zone coordinate for that label, and releases. Drop zones are fixed in robot coordinates: FRAGILE, IMMEDIATE, ZONE_A, and DAMAGED bins arranged across the workspace.</p>
-        </td>
-      </tr>
-    </table>
-  </section>
-
-  <div class="media-wrap fade">
-    <div class="media-pair">
-      <div class="video-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-        Full sorting cycle video
-      </div>
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Drop zones layout
-      </div>
-    </div>
-  </div>
-
 
   <!-- SORTOS DASHBOARD -->
   <section class="content-section fade">
     <span class="section-label">SortOS Dashboard</span>
-    <p style="font-size:16px;line-height:1.85;color:var(--ink);">A Flask-based web dashboard (SortOS) provides a live MJPEG feed with detection overlays, a running inventory log, confidence threshold slider, sort-event toasts, and a trend chart ” giving operators full visibility without needing to touch the terminal.</p>
   </section>
-
   <div class="media-wrap fade">
-    <div class="media-pair">
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        SortOS dashboard screenshot
-      </div>
-      <div class="photo-placeholder">
-        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        Live feed with overlays
-      </div>
+    <div class="photo-placeholder">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      SortOS dashboard screenshot
     </div>
   </div>
+
+  <!-- GROUP PHOTO -->
+  <div class="media-wrap fade" style="margin-top:24px;">
+    <div class="photo-placeholder">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+      Group photo
+    </div>
+    <p class="team-credit">I created this project alongside Abhinav Kumar &amp; Nekha Sudheer.</p>
+  </div>
+
+
 
 
   <!-- STACK -->
